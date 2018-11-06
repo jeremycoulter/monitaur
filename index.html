@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="A daily task monitoring prototype.">
+      <meta name="author" content="Jeremy Coulter">
+      <link rel="icon" href="favicon.ico">
+      <title>Monitaur</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link href="monitaur.css" rel="stylesheet">
+   </head>
+   <body>
+      <main role="main" class="container">
+         <h1 class="mt-5">
+            <img src="./monitaur.png" class="rounded float-left" alt="Monotaur: Life Monitoring" width="39" height="39">
+            &nbsp;
+            Monitaur
+         </h1>
+         <div class="alert alert-primary" role="alert">
+            <span id="currentDate"></span>
+         </div>
+         <div id="trelloCards">
+            <ul class="list-group">
+               <li class="list-group-item d-flex align-items-center">
+                  No events have been logged yet today.
+               </li>
+            </ul>
+         </div>
+         <br />
+         <div class="alert alert-light" role="alert">
+            <small>
+            <a href="https://github.com/jeremycoulter/monitaur" title="Monitaur" target="_blank">Monitaur</a> v0.0.1 &copy; 2018 <a href="https://jeremycoulter.github.io" title="Jeremy Coulter" target="_blank">Jeremy Coulter</a> and licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" title="MIT License" target="_blank">MIT</a>.
+            <br />
+            Icons by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> at <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
+            </small>
+         </div>
+      </main>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="monitaur.js"></script>
+   </body>
+</html>
