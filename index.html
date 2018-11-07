@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="A daily task monitoring prototype.">
+      <meta name="description" content="A Trello API integrated daily task monitoring prototype application.">
       <meta name="author" content="Jeremy Coulter">
       <link rel="icon" href="favicon.ico">
       <title>Monitaur</title>
@@ -18,19 +18,20 @@
             Monitaur
          </h1>
          <div class="alert alert-primary" role="alert">
+            <span id="greeting"></span>
             <span id="currentDate"></span>
          </div>
          <div id="trelloCards">
             <ul class="list-group">
                <li class="list-group-item d-flex align-items-center">
-                  No events have been logged yet today.
+                  Loading task log. Please wait.
                </li>
             </ul>
          </div>
          <br />
          <div class="alert alert-light" role="alert">
             <small>
-            <a href="https://github.com/jeremycoulter/monitaur" title="Monitaur" target="_blank">Monitaur</a> v0.0.1 &copy; 2018 <a href="https://jeremycoulter.github.io" title="Jeremy Coulter" target="_blank">Jeremy Coulter</a> and licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" title="MIT License" target="_blank">MIT</a>.
+            <a href="https://github.com/jeremycoulter/monitaur" title="Monitaur" target="_blank">Monitaur</a> v<span id="currentVersion"></span> &copy; <span id ="copyrightYear"></span> <a href="https://jeremycoulter.github.io" title="Jeremy Coulter" target="_blank">Jeremy Coulter</a> and licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" title="MIT License" target="_blank">MIT</a>.
             <br />
             Icons by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> at <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
             </small>

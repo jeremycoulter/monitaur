@@ -1,10 +1,10 @@
 /*!
-  * Monitaur v0.0.1 (https://github.com/jeremycoulter/monitaur)
+  * Monitaur v0.0.2 (https://github.com/jeremycoulter/monitaur)
   * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 
 .badge-monitaur {
-    width: 48px;
+    width: 52px;
     margin-right: 20px;
 }

@@ -1,2 +1,2 @@
 # monitaur
-A daily task monitoring prototype.
+A Trello API integrated daily task monitoring prototype application.

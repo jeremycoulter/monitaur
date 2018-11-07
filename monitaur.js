@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.1 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.2 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,6 +7,8 @@
 /*
  * constants
  */
+var CURRENT_VERSION = "0.0.2";
+
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
 var BOARD_ID = "5be1eae722a847542bdeeb8e";
@@ -14,38 +16,58 @@ var BOARD_ID = "5be1eae722a847542bdeeb8e";
 /*
  * startup function calls
  */
+printGreeting();
 printCurrentDate();
 printTrelloCards();
+printCurrentVersion();
+printCopyrightYear();
+
+// enable tooltips
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 /*
  * function definitions
  */
-function printCurrentDate() {
-    var date = new Date();
-    document.getElementById('currentDate').innerHTML = date;
+function printGreeting() {
+    var greetings = ["Goeie dag", "Tungjatjeta", "Ahlan bik", "Nomoskar", "Selam", "Mingala ba", "Nín hao", "Zdravo", "Nazdar", "Hallo", "Hallo", "Helo", "Hei", "Bonjour", "Guten Tag", "Geia", "Shalóm", "Namasté", "Szia", "Hai", "Kiana", "Dia is muire dhuit", "Buongiorno", "Kónnichi wa", "Annyeonghaseyo", "Sabai dii", "Ave", "Es mīlu tevi", "Selamat petang", "Sain baina uu", "Namaste", "Hallo", "Salâm", "Witajcie", "Olá", "Salut", "Privét", "Talofa", "Ćao", "Nazdar", "Zdravo", "Hola", "Jambo", "Hej", "Halo", "Sàwàtdee kráp", "Merhaba", "Pryvít", "Adaab arz hai", "Chào"];
+    var languages = ["Afrikaans", "Albanian", "Arabic", "Bengali", "Bosnian", "Burmese", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "Filipino", "Finnish", "French", "German", "Greek", "Hebrew", "Hindi", "Hungarian", "Indonesian", "Iñupiaq", "Irish", "Italian", "Japanese", "Korean", "Lao", "Latin", "Latvian", "Malay", "Mongolian", "Nepali", "Norwegian", "Persian", "Polish", "Portuguese", "Romanian", "Russian", "Samoan", "Serbian", "Slovak", "Slovene", "Spanish", "Swahili", "Swedish", "Tagalog", "Thai", "Turkish", "Ukrainian", "Urdu", "Vietnamese"];
+    var randy = Math.floor(Math.random() * 50);
+    var languageString = greetings[randy] + ' is ' + languages[randy] + ' for Hello!';
+
+    document.getElementById('greeting').innerHTML = '<a href="#" data-toggle="tooltip" title="' + languageString + '" data-original-title="' + languageString + '">' + greetings[randy] + '</a>!';
 }
 
-function dateLeftZeroPad(date) {
-    if (date < 10) {
-        return "0" + date;
-    } else {
-        return date;
-    }
+function printCurrentDate() {
+    var date = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var daySuffixes = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
+
+    document.getElementById('currentDate').innerHTML = "Today is <strong>" +
+        days[date.getDay()] + ", " +
+        months[date.getMonth()] + " " +
+        date.getDate() + daySuffixes[date.getDate() % 10] + ", " +
+        date.getFullYear() + "</strong>.";
 }
 
 function printTrelloCards() {
     var cardsObject;
     var cardsHtml = '<ul class="list-group">';
-    var date = new Date();
-    var todayString = date.getFullYear() + "-" + dateLeftZeroPad(date.getMonth() + 1) + "-" + dateLeftZeroPad(date.getDate());
+
+    var todayDate = new Date();
+    var todayDateString = todayDate.getFullYear() + "-" + dateLeftZeroPad(todayDate.getMonth() + 1) + "-" + dateLeftZeroPad(todayDate.getDate());
+
     var todayCardCount = 0;
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cardsObject = JSON.parse(this.responseText);
 
             for (var i = cardsObject.length - 1; i >= 0; i--) {
-                if (todayString == cardsObject[i].dateLastActivity.substring(0, 10)) {
+                if (todayDateString == offestDateTime(cardsObject[i].dateLastActivity)) {
                     todayCardCount++;
                     cardsHtml += '<li class="list-group-item d-flex align-items-center">' +
                         '<span class="badge badge-primary badge-pill badge-monitaur">' +
@@ -58,7 +80,7 @@ function printTrelloCards() {
 
             if (todayCardCount == 0) {
                 cardsHtml += '<li class="list-group-item d-flex align-items-center">' +
-                    'No events have been logged today.' +
+                    'No tasks have been logged today.' +
                     '</li>';
             }
 
@@ -69,4 +91,38 @@ function printTrelloCards() {
     };
     xhttp.open("GET", "https://api.trello.com/1/boards/" + BOARD_ID + "/cards?key=" + DEVELOPER_API_KEY + "&token=" + DEVELOPER_TOKEN, true);
     xhttp.send();
+}
+
+function printCurrentVersion() {
+    document.getElementById('currentVersion').innerHTML = CURRENT_VERSION;
+}
+
+function printCopyrightYear() {
+    document.getElementById('copyrightYear').innerHTML = new Date().getFullYear();
+}
+
+function dateLeftZeroPad(date) {
+    if (date < 10) {
+        return "0" + date;
+    } else {
+        return date;
+    }
+}
+
+function offestDateTime(dateLastActivity) {
+    var cardDate;
+    var cardDateString;
+
+    cardDate = new Date(dateLastActivity.substring(0, 4),
+        parseInt(dateLastActivity.substring(5, 7), 10) - 1,
+        dateLastActivity.substring(8, 10),
+        dateLastActivity.substring(11, 13),
+        dateLastActivity.substring(14, 16),
+        dateLastActivity.substring(17, 19),
+        dateLastActivity.substring(20, 23));
+
+    cardDate.setMinutes(cardDate.getMinutes() - new Date().getTimezoneOffset());
+    cardDateString = cardDate.getFullYear() + "-" + dateLeftZeroPad(cardDate.getMonth() + 1) + "-" + dateLeftZeroPad(cardDate.getDate());
+
+    return cardDateString;
 }
