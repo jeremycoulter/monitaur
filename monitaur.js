@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.2 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.3 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.2";
+var CURRENT_VERSION = "0.0.3";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -71,7 +71,7 @@ function printTrelloCards() {
                     todayCardCount++;
                     cardsHtml += '<li class="list-group-item d-flex align-items-center">' +
                         '<span class="badge badge-primary badge-pill badge-monitaur">' +
-                        cardsObject[i].name.substring(0, 4) +
+                        convertTime(cardsObject[i].name.substring(0, 4)) +
                         '</span>' +
                         cardsObject[i].name.substring(5).toUpperCase() +
                         '</li>';
@@ -125,4 +125,19 @@ function offestDateTime(dateLastActivity) {
     cardDateString = cardDate.getFullYear() + "-" + dateLeftZeroPad(cardDate.getMonth() + 1) + "-" + dateLeftZeroPad(cardDate.getDate());
 
     return cardDateString;
+}
+
+function convertTime(timeString) {
+    var hour = parseInt(timeString.substring(0, 2));
+    var minute = timeString.substring(2, 4);
+    var suffix = "AM";
+
+    if(hour == 0) {
+        hour = 12;
+    } else if(hour > 12) {
+        hour = hour - 12;
+        suffix = "PM";
+    }
+
+    return hour + ":" + minute + suffix;
 }
