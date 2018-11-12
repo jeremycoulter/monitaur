@@ -1,5 +1,5 @@
 /*!
-  * Monitaur v0.0.4 (https://github.com/jeremycoulter/monitaur)
+  * Monitaur v0.0.5 (https://github.com/jeremycoulter/monitaur)
   * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -7,4 +7,11 @@
 .badge-monitaur {
     width: 72px;
     margin-right: 20px;
+}
+
+.task-icon-right {
+	position: absolute;
+	right: 20px;
+	width: 24px;
+	height: 24px;
 }

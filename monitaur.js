@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.4 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.5 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.4";
+var CURRENT_VERSION = "0.0.5";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -55,6 +55,7 @@ function printCurrentDate() {
 function printTrelloCards() {
     var cardsObject;
     var cardsHtml = '<ul class="list-group">';
+    var cardDescription;
 
     var todayDate = new Date();
     var todayDateString = todayDate.getFullYear() + "-" + dateLeftZeroPad(todayDate.getMonth() + 1) + "-" + dateLeftZeroPad(todayDate.getDate());
@@ -69,11 +70,13 @@ function printTrelloCards() {
             for (var i = cardsObject.length - 1; i >= 0; i--) {
                 if (todayDateString == offestDateTime(cardsObject[i].dateLastActivity)) {
                     todayCardCount++;
+                    cardDescription = cardsObject[i].name.substring(5).toUpperCase();
                     cardsHtml += '<li class="list-group-item d-flex align-items-center">' +
                         '<span class="badge badge-primary badge-pill badge-monitaur">' +
                         convertTime(cardsObject[i].name.substring(0, 4)) +
                         '</span>' +
-                        cardsObject[i].name.substring(5).toUpperCase() +
+                        cardDescription +
+                        getTaskIcon(cardDescription) +
                         '</li>';
                 }
             }
@@ -142,4 +145,17 @@ function convertTime(timeString) {
     }
 
     return hour + ":" + minute + suffix;
+}
+
+function getTaskIcon(description) {
+    var keywords = ["coffee", "documentation", "development", "french", "gym", "lunch", "monitaur", "pristiq", "pubsley"];
+    var iconHtml = "";
+
+    for(var i = 0; i < keywords.length; i++) {
+        if(description.includes(keywords[i].toUpperCase())) {
+            iconHtml = '<img class="task-icon-right" src="./icons/' + keywords[i] + '.png" alt="' + keywords[i].toUpperCase() + '" />'
+        }
+    }
+
+    return iconHtml;
 }
