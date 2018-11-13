@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.6 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.7 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.6";
+var CURRENT_VERSION = "0.0.7";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -44,11 +44,18 @@ function printCurrentDate() {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var daySuffixes = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
+    var daySuffix;
+
+    if(date.getDate() > 10 && date.getDate() < 20) {
+        daySuffix = "th";
+    } else {
+        daySuffix = daySuffixes[date.getDate() % 10];
+    }
 
     document.getElementById('currentDate').innerHTML = "Today is <strong>" +
         days[date.getDay()] + ", " +
         months[date.getMonth()] + " " +
-        date.getDate() + daySuffixes[date.getDate() % 10] + ", " +
+        date.getDate() + daySuffix + ", " +
         date.getFullYear() + "</strong>.";
 }
 
@@ -71,7 +78,7 @@ function printTrelloCards() {
                 if (todayDateString == offestDateTime(cardsObject[i].dateLastActivity)) {
                     todayCardCount++;
                     cardDescription = cardsObject[i].name.substring(5).toUpperCase();
-                    cardsHtml += '<li class="list-group-item d-flex align-items-center">' +
+                    cardsHtml += '<li class="list-group-item d-flex align-items-center list-group-item-monitaur">' +
                         '<span class="badge badge-primary badge-pill badge-monitaur">' +
                         convertTime(cardsObject[i].name.substring(0, 4)) +
                         '</span>' +
@@ -148,7 +155,7 @@ function convertTime(timeString) {
 }
 
 function getTaskIcon(description) {
-    var keywords = ["coffee", "documentation", "development", "french", "gym", "lunch", "meet", "monitaur", "pristiq", "pubsley", "shower"];
+    var keywords = ["clean", "coffee", "development", "dinner", "documentation", "french", "gym", "lunch", "meet", "monitaur", "pristiq", "pubsley", "shower"];
     var iconHtml = "";
 
     for(var i = 0; i < keywords.length; i++) {

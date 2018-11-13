@@ -1,12 +1,16 @@
 /*!
-  * Monitaur v0.0.6 (https://github.com/jeremycoulter/monitaur)
+  * Monitaur v0.0.7 (https://github.com/jeremycoulter/monitaur)
   * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 
 .badge-monitaur {
-    width: 72px;
+    min-width: 72px;
     margin-right: 20px;
+}
+
+.list-group-item-monitaur {
+	padding-right: 64px;
 }
 
 .task-icon-right {
