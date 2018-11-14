@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.7 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.8 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.7";
+var CURRENT_VERSION = "0.0.8";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -46,7 +46,7 @@ function printCurrentDate() {
     var daySuffixes = ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"];
     var daySuffix;
 
-    if(date.getDate() > 10 && date.getDate() < 20) {
+    if (date.getDate() > 10 && date.getDate() < 20) {
         daySuffix = "th";
     } else {
         daySuffix = daySuffixes[date.getDate() % 10];
@@ -142,11 +142,11 @@ function convertTime(timeString) {
     var minute = timeString.substring(2, 4);
     var suffix = "AM";
 
-    if(hour == 0) {
+    if (hour == 0) {
         hour = 12;
-    } else if(hour == 12) {
+    } else if (hour == 12) {
         suffix = "PM";
-    } else if(hour > 12) {
+    } else if (hour > 12) {
         hour = hour - 12;
         suffix = "PM";
     }
@@ -155,11 +155,11 @@ function convertTime(timeString) {
 }
 
 function getTaskIcon(description) {
-    var keywords = ["clean", "coffee", "development", "dinner", "documentation", "french", "gym", "lunch", "meet", "monitaur", "pristiq", "pubsley", "shower"];
+    var keywords = ["clean", "coffee", "development", "dinner", "documentation", "french", "gym", "lunch", "meet", "monitaur", "piano", "pristiq", "pubsley", "shower", "yardwork"];
     var iconHtml = "";
 
-    for(var i = 0; i < keywords.length; i++) {
-        if(description.includes(keywords[i].toUpperCase())) {
+    for (var i = 0; i < keywords.length; i++) {
+        if (description.includes(keywords[i].toUpperCase())) {
             iconHtml = '<img class="task-icon-right" src="./icons/' + keywords[i] + '.png" alt="' + keywords[i].toUpperCase() + '" />'
         }
     }
