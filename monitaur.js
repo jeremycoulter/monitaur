@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.11 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.12 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.11";
+var CURRENT_VERSION = "0.0.12";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -155,7 +155,7 @@ function convertTime(timeString) {
 }
 
 function getTaskIcon(description) {
-    var keywords = ["breakfast", "brewery", "clean", "coffee", "development", "dinner", "documentation", "french", "gym", "laundry", "lunch", "meet", "monitaur", "piano", "pristiq", "pubsley", "shopping", "shower", "yardwork"];
+    var keywords = ["breakfast", "brewery", "clean", "coffee", "development", "dinner", "documentation", "french", "garbage", "gym", "laundry", "lunch", "meet", "monitaur", "piano", "pristiq", "pubsley", "recycling", "shopping", "shower", "yardwaste", "yardwork"];
     var iconHtml = "";
 
     for (var i = 0; i < keywords.length; i++) {
