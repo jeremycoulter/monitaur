@@ -1,5 +1,5 @@
 /*!
- * Monitaur v0.0.16 (https://github.com/jeremycoulter/monitaur)
+ * Monitaur v0.0.17 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.16";
+var CURRENT_VERSION = "0.0.17";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -69,12 +69,20 @@ function printTrelloCards() {
 
     var todayCardCount = 0;
 
+    var quickies = {
+        "pristiq": 0,
+        "pubsley": 0,
+        "coffee": 0,
+        "beer": 0
+    };
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cardsObject = JSON.parse(this.responseText);
 
             for (var i = cardsObject.length - 1; i >= 0; i--) {
+
                 if (todayDateString == offestDateTime(cardsObject[i].dateLastActivity)) {
                     todayCardCount++;
                     cardDescription = cardsObject[i].name.substring(5).toUpperCase();
@@ -85,7 +93,15 @@ function printTrelloCards() {
                         cardDescription +
                         getTaskIcon(cardDescription) +
                         '</li>';
+
+                    for(var j = 0; j < Object.keys(quickies).length; j++) {
+                        if(cardDescription.toLowerCase().includes(Object.keys(quickies)[j])) {
+                            quickies[Object.keys(quickies)[j]]++;
+                        }
+                    }
+
                 }
+
             }
 
             if (todayCardCount == 0) {
@@ -96,6 +112,11 @@ function printTrelloCards() {
 
             cardsHtml += '</ul>';
             document.getElementById('trelloCards').innerHTML = cardsHtml;
+
+            for(var k = 0; k < Object.keys(quickies).length; k++) {
+                document.getElementById(Object.keys(quickies)[k] + 'Quicky').innerHTML = quickies[Object.keys(quickies)[k]];
+            }
+
         }
 
     };
