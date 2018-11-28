@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.17";
+var CURRENT_VERSION = "0.0.18";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -176,7 +176,7 @@ function convertTime(timeString) {
 }
 
 function getTaskIcon(description) {
-    var keywords = ["beer", "breakfast", "brewery", "clean", "coffee", "development", "dinner", "documentation", "french", "garbage", "gig", "gym", "laundry", "lunch", "meet", "monitaur", "piano", "pristiq", "promo", "pubsley", "recycling", "repair", "shopping", "shower", "yardwaste", "yardwork"];
+    var keywords = ["beer", "breakfast", "brewery", "clean", "coffee", "compost", "development", "dinner", "documentation", "french", "garbage", "gig", "gym", "laundry", "lunch", "meet", "monitaur", "piano", "pristiq", "promo", "pubsley", "recycling", "repair", "shopping", "shower", "yardwaste", "yardwork"];
     var iconHtml = "";
 
     for (var i = 0; i < keywords.length; i++) {

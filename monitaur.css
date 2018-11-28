@@ -1,5 +1,5 @@
 /*!
-  * Monitaur v0.0.17 (https://github.com/jeremycoulter/monitaur)
+  * Monitaur v0.0.18 (https://github.com/jeremycoulter/monitaur)
   * Copyright 2018 Jeremy Coulter (https://jeremycoulter.github.io)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -15,13 +15,15 @@
 
 .task-icon-right {
 	position: absolute;
+	top: 50%;
 	right: 20px;
+	transform: translate(0, -50%);
 	width: 24px;
 	height: 24px;
 }
 
 .quicky-col-one {
-	padding-left: 0px;
+	padding-left: 0;
 	padding-right: 8px;
 }
 
@@ -40,9 +42,14 @@
 	padding-right: 0px;
 }
 
+.quicky-alert {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
 .quicky-alert-col {
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0;
+	padding-right: 0;
 	text-align: center;
 }
 
