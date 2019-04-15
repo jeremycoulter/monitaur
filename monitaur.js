@@ -1,5 +1,5 @@
 /*!
- * monitaur v0.0.32 (https://github.com/jeremycoulter/monitaur)
+ * monitaur v0.0.33 (https://github.com/jeremycoulter/monitaur)
  * Copyright 2019 Jeremy Coulter (https://jeremycoulter.github.io)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -7,7 +7,7 @@
 /*
  * constants
  */
-var CURRENT_VERSION = "0.0.32";
+var CURRENT_VERSION = "0.0.33";
 
 var DEVELOPER_API_KEY = "67717ca4d7209a13a5e9061c3d0a58f5";
 var DEVELOPER_TOKEN = "53a3e070da0bcb2ef5701a96ebe5e817dc9d308dd1d04c61d84d58f1caae05e6";
@@ -102,7 +102,7 @@ function printTrelloCards() {
                     }
 
                     // TODO temporary fix to account for new medication
-                    if(cardDescription.toLowerCase() === "remeron") {
+                    if(cardDescription.toLowerCase() === "remeron" || cardDescription.toLowerCase() === "ativan") {
                         quickies["pristiq"]++;
                     }
 
@@ -182,7 +182,7 @@ function convertTime(timeString) {
 }
 
 function getTaskIcon(description) {
-    var keywords = ["appointment", "band", "beer", "breakfast", "brewery", "call", "clean", "coffee", "compost", "development", "dinner", "documentation", "email", "fermentaur", "financial", "french", "garbage", "gig", "gym", "humidifier", "launder", "lunch", "meet", "monitaur", "piano", "plant", "pristiq", "promo", "pubsley", "recycling", "remeron", "renovation", "repair", "shopping", "shower", "television", "therapy", "vitamin", "yardwaste", "yardwork"];
+    var keywords = ["appointment", "ativan", "band", "beer", "breakfast", "brewery", "call", "clean", "coffee", "compost", "development", "dinner", "documentation", "email", "fermentaur", "financial", "french", "garbage", "gig", "gym", "humidifier", "launder", "lunch", "meet", "monitaur", "piano", "plant", "pristiq", "promo", "pubsley", "recycling", "remeron", "renovation", "repair", "shopping", "shower", "television", "therapy", "vitamin", "yardwaste", "yardwork"];
     var iconHtml = "";
 
     for (var i = 0; i < keywords.length; i++) {
